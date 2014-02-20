@@ -48,7 +48,7 @@ public class RTMPEIoFilter extends IoFilterAdapter {
 	public void messageReceived(NextFilter nextFilter, IoSession session, Object obj) throws Exception {
 		String sessionId = (String) session.getAttribute(RTMPConnection.RTMP_SESSION_ID);
 		log.trace("Session id: {}", sessionId);
-		RTMPMinaConnection conn = (RTMPMinaConnection) RTMPClientConnManager.getInstance().getConnectionBySessionId(sessionId);		
+		RTMPMinaConnection conn = (RTMPMinaConnection) RTMPClientConnManager.getClientInstance().getConnectionBySessionId(sessionId);		
 		RTMP rtmp = conn.getState();
 		//if there is a handshake on the session, ensure the type has been set
 		if (session.containsAttribute(RTMPConnection.RTMP_HANDSHAKE)) {

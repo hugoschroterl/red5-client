@@ -169,7 +169,7 @@ class RTMPTClientConnector extends Thread {
 			sessionId = responseStr.substring(0, responseStr.length() - 1);
 			log.debug("Got an id {}", sessionId);		
 			// create a new connection
-			conn = (RTMPTClientConnection) RTMPClientConnManager.getInstance().createConnection(RTMPTClientConnection.class, sessionId);
+			conn = (RTMPTClientConnection) RTMPClientConnManager.getClientInstance().createConnection(RTMPTClientConnection.class, sessionId);
 			log.debug("Got session id {} from connection", conn.getSessionId());			
 			// client state
 			conn.setHandler(client);
